@@ -30,9 +30,16 @@ function search () {
             li.classList.toggle('favourite');
             if (li.classList.contains('favourite')) {
               favourites.push({li});
+              //   for (const item of favourites) {
+              //     listFavourites.innerHTML += `<li>${JSON.stringify(item.innerHTML)}</li>`;
+              //   }
               listFavourites.innerHTML += `<li>${li.innerHTML}</li>`;
               console.log(favourites);
             }
+            localStorage.setItem('favourites', JSON.stringify(favourites));
+            const savedFavourites = JSON.parse(localStorage.getItem('favourites'));
+            console.log(savedFavourites.length);
+            listFavourites.innerHTML = savedFavourites;
           }
           li.addEventListener('click', fav);
         }
@@ -41,6 +48,3 @@ function search () {
 }
 
 button.addEventListener('click', search);
-
-
-
