@@ -19,9 +19,9 @@ function search () {
 
       for (const result of data) {
         if (result.show.image === null) {
-          list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br>${result.show.name}</li>`;
+          list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br><h3>${result.show.name}</h3></li>`;
         } else {
-          list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br>${result.show.name}</li>`;
+          list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br><h3>${result.show.name}</h3></li>`;
         }
         const everyShow = document.querySelectorAll('li');
        
@@ -34,7 +34,7 @@ function search () {
             }
             listFavourites.innerHTML = '';
             for (let i=0; i<favourites.length; i++) {
-              listFavourites.innerHTML += `<li>${favourites[i].innerHTML}</li>`;
+              listFavourites.innerHTML += `<li class="favourite_serie">${favourites[i].innerHTML}</li>`;
               //   const newItem = document.createElement('li');
               //   const newContent = document.createTextNode(`${favourites[i].innerHTML}`);
               //   newItem.appendChild(newContent);
@@ -54,3 +54,5 @@ function search () {
 }
 
 button.addEventListener('click', search);
+
+//node modules

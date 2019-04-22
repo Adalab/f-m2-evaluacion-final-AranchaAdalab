@@ -4,14 +4,38 @@ body {
 	margin: 0;
 	background: $color-white;
 	height: 100vh;
+	width: 100vw;
+	text-align: center;
 }
 
 img {
-	width: 100px;
+	width: 120px;
+}
+
+.input {
+	height: 25px;
+	font-size: 14px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid 1px grey;
+}
+
+.search {
+	background-color: rgb(124, 10, 44);
+	font-size: 14px;
+	color: whitesmoke;
+	height: 28px;
+	width: 60px;
+	border: none;
+	border-radius: 2px;
 }
 
 .list {
 	list-style: none;
+	display: flex;
+	flex-wrap: wrap; 
+	
 }
 
 .myFavourites {
@@ -22,20 +46,32 @@ img {
 
 .serie {
 	background-color: lightpink;
-	color: grey;
-	font-size: 24px;
+	color: rgb(124, 10, 44);
+	font-size: 18px;
 	font-weight: 700;
 	border-bottom: solid 1px grey;
+	padding: 10px;
+	margin: 5px;
+	width: 140px;
 }
 
 .favourite {
 	color: lightpink;
-	background-color: grey;
-	font-size: 24px;
+	background-color: rgb(124, 10, 44);
+	font-size: 18px;
 	font-weight: 700;
 	border-bottom: solid 1px grey;
 }
 
 .container_principal {
 	display: flex;
+}
+
+.container_left {
+	padding: 22px;
+	text-align: center;
+}
+
+.container_right {
+	width: 900px;
 }
