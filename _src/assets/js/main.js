@@ -24,22 +24,24 @@ function search () {
           list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br>${result.show.name}</li>`;
         }
         const everyShow = document.querySelectorAll('li');
-        
+       
         for (const li of everyShow) {
           function fav() {
             li.classList.toggle('favourite');
             if (li.classList.contains('favourite')) {
-              favourites.push({li});
+              favourites.push(li);
               //   for (const item of favourites) {
-              //     listFavourites.innerHTML += `<li>${JSON.stringify(item.innerHTML)}</li>`;
+              //     listFavourites.innerHTML += `<li>${item.innerHTML}</li>`;
               //   }
               listFavourites.innerHTML += `<li>${li.innerHTML}</li>`;
               console.log(favourites);
+              localStorage.setItem('favourites', JSON.stringify(favourites));
+              const savedFavourites = JSON.parse(localStorage.getItem('favourites'));
+              console.log(savedFavourites.length);
+              if (listFavourites.innerHTML === ''){
+                listFavourites.innerHTML = savedFavourites;
+              }
             }
-            localStorage.setItem('favourites', JSON.stringify(favourites));
-            const savedFavourites = JSON.parse(localStorage.getItem('favourites'));
-            console.log(savedFavourites.length);
-            listFavourites.innerHTML = savedFavourites;
           }
           li.addEventListener('click', fav);
         }
