@@ -4,7 +4,7 @@
 const button = document.querySelector('.search');
 const input = document.querySelector('.input');
 const list = document.querySelector('.list');
-const listFavourites = document.querySelector ('.myFavourites');
+let listFavourites = document.querySelector ('.myFavourites');
 const imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
 let favourites = [];
@@ -30,17 +30,21 @@ function search () {
             li.classList.toggle('favourite');
             if (li.classList.contains('favourite')) {
               favourites.push(li);
-              //   for (const item of favourites) {
-              //     listFavourites.innerHTML += `<li>${item.innerHTML}</li>`;
-              //   }
-              listFavourites.innerHTML += `<li>${li.innerHTML}</li>`;
               console.log(favourites);
+            }
+            listFavourites.innerHTML = '';
+            for (let i=0; i<favourites.length; i++) {
+              listFavourites.innerHTML += `<li>${favourites[i].innerHTML}</li>`;
+              //   const newItem = document.createElement('li');
+              //   const newContent = document.createTextNode(`${favourites[i].innerHTML}`);
+              //   newItem.appendChild(newContent);
+              //   listFavourites.appendChild(newItem);
               localStorage.setItem('favourites', JSON.stringify(favourites));
               const savedFavourites = JSON.parse(localStorage.getItem('favourites'));
               console.log(savedFavourites.length);
-              if (listFavourites.innerHTML === ''){
-                listFavourites.innerHTML = savedFavourites;
-              }
+            //   if (listFavourites.innerHTML === ''){
+            //     listFavourites.innerHTML = savedFavourites;
+            //   }
             }
           }
           li.addEventListener('click', fav);
