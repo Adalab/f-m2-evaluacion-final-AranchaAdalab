@@ -14,13 +14,21 @@ function search () {
             console.log(data);
             for (const result of data) {
                 if (result.show.image === null) {
-                    list.innerHTML += `<li><img class="photo" src="${imgDefault}"<br>${result.show.name}</li>`;
+                    list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br>${result.show.name}</li>`;
                 } else {
-                    list.innerHTML += `<li><img class="photo" src="${result.show.image.medium}"<br>${result.show.name}</li>`;
+                    list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br>${result.show.name}</li>`;
                 }
+            }
+            const li = document.querySelectorAll('li');
+            for (const item of li) {
+                function fav() {
+                    item.classList.add('favourite');
+                }
+                item.addEventListener('click', fav);
             }
         });
 }
 
 button.addEventListener('click', search);
+
 
