@@ -7,7 +7,7 @@ const list = document.querySelector('.list');
 const listFavourites = document.querySelector ('.myFavourites');
 const imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
-
+let favourites = [];
 
 function search () {
   list.innerHTML = '';
@@ -24,7 +24,7 @@ function search () {
           list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br>${result.show.name}</li>`;
         }
         const everyShow = document.querySelectorAll('li');
-        let favourites = [];
+        
         for (const li of everyShow) {
           function fav() {
             li.classList.toggle('favourite');
