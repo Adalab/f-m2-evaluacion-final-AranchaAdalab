@@ -4,6 +4,7 @@
 const button = document.querySelector('.search');
 const input = document.querySelector('.input');
 const list = document.querySelector('.list');
+const containerLeft = document.querySelector('.container_left');
 let listFavourites = document.querySelector ('.myFavourites');
 const imgDefault = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
@@ -46,7 +47,7 @@ function fav(event) {
   }
   listFavourites.innerHTML = '';
   for (let i=0; i<favourites.length; i++) {
-    listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${favourites[i].photo}"><h3 class="favourite_title_serie">${favourites[i].titleSerie}</h3></li>`;
+    listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${favourites[i].photo}"><h3 class="favourite_title_serie">${favourites[i].titleSerie}</h3><i class="fas fa-times-circle"></i></li>`;
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }
 }
@@ -56,7 +57,32 @@ function saveData() {
   if (listFavourites.innerHTML === ''){
     favourites = savedFavourites;
     for (let i=0; i<savedFavourites.length; i++) {
-      listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${savedFavourites[i].photo}"><h3 class="favourite_title_serie">${savedFavourites[i].titleSerie}</h3></li>`;
+      listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${savedFavourites[i].photo}"><h3 class="favourite_title_serie">${savedFavourites[i].titleSerie}</h3><i class="fas fa-times-circle"></i></li>`;
     }
   }
+}
+
+const newItem = document.createElement('button');
+const newContent = document.createTextNode('Borrar favoritos');
+newItem.appendChild(newContent);
+newItem.classList.add('erase_button');
+containerLeft.appendChild(newItem);
+const eraseBtn = document.querySelector('.erase_button');
+
+function eraseAllFav() {
+  localStorage.removeItem('favourites');
+  listFavourites.remove();
+}
+
+eraseBtn.addEventListener('click', eraseAllFav);
+
+function eraseFav(event) {
+  const cross = event.currentTarget;
+  const eraseSerie = cross.parentElement;
+  eraseSerie.remove();
+}
+
+const crosses = document.querySelectorAll('.fas');
+for (const cross of crosses) {
+  cross.addEventListener('click', eraseFav);
 }
