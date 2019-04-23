@@ -46,7 +46,7 @@ function fav(event) {
   }
   listFavourites.innerHTML = '';
   for (let i=0; i<favourites.length; i++) {
-    listFavourites.innerHTML += `<li class="favourite_serie"><img class="favourite_photo" src="${favourites[i].photo}"><br><h3 class="favourite_title_serie">${favourites[i].titleSerie}</h3></li>`;
+    listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${favourites[i].photo}"><h3 class="favourite_title_serie">${favourites[i].titleSerie}</h3></li>`;
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }
 }
@@ -56,7 +56,7 @@ function saveData() {
   if (listFavourites.innerHTML === ''){
     favourites = savedFavourites;
     for (let i=0; i<savedFavourites.length; i++) {
-      listFavourites.innerHTML += `<li class="favourite_serie"><img class="favourite_photo" src="${savedFavourites[i].photo}"><br><h3 class="favourite_title_serie">${savedFavourites[i].titleSerie}</h3></li>`;
+      listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${savedFavourites[i].photo}"><h3 class="favourite_title_serie">${savedFavourites[i].titleSerie}</h3></li>`;
     }
   }
 }

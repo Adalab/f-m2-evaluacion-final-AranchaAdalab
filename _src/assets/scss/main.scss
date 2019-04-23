@@ -2,7 +2,7 @@
 
 body {
 	margin: 0;
-	background: $color-white;
+	background: linear-gradient(to bottom, $color-white, rgb(218, 216, 216)); 
 	height: 100vh;
 	width: 100vw;
 	text-align: center;
@@ -12,66 +12,110 @@ img {
 	width: 120px;
 }
 
+.container_principal {
+	display: flex;
+}
+
+.title {
+	text-transform: uppercase;
+	color: $color-pretty;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container_left {
+	padding: 22px 22px 22px 40px;
+	width: 25%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.subtitle {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 20px;
+	color: $color-pretty;
+}
+
+.searching {
+	display: flex;
+	justify-content: center;
+}
+
 .input {
 	height: 25px;
 	font-size: 14px;
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-bottom: solid 1px grey;
+	border-bottom: solid 1px $color-grey;
 }
 
 .search {
-	background-color: rgb(124, 10, 44);
+	background-color: $color-pretty;
 	font-size: 14px;
-	color: whitesmoke;
+	color: $color-white-smoke;
 	height: 28px;
-	width: 60px;
+	width: 65px;
 	border: none;
 	border-radius: 2px;
-}
-
-.list {
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap; 
-	
 }
 
 .myFavourites {
 	list-style: none;
 	font-size: 20px;
 	font-weight: 700;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.favourite_serie {
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	border-bottom: solid 1px $color-pretty;
+}
+
+.favourite_photo {
+	width: 70px;
+}
+
+.favourite_title_serie {
+	margin: 10px;
+	color: $color-pretty;
+	font-size: 18px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container_right {
+	width: 75%;
+}
+
+.list {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap; 
 }
 
 .serie {
-	background-color: lightpink;
-	color: rgb(124, 10, 44);
+	background-color: $color-pink;
+	color: $color-pretty;
 	font-size: 18px;
 	font-weight: 700;
-	border-bottom: solid 1px grey;
 	padding: 10px;
 	margin: 5px;
 	width: 140px;
 }
 
 .favourite {
-	color: lightpink;
-	background-color: rgb(124, 10, 44);
+	color: $color-pink;
+	background-color: $color-pretty;
 	font-size: 18px;
 	font-weight: 700;
-	border-bottom: solid 1px grey;
 }
 
-.container_principal {
-	display: flex;
-}
-
-.container_left {
-	padding: 22px;
-	text-align: center;
-}
-
-.container_right {
-	width: 900px;
+.title_serie {
+	margin: 15px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
