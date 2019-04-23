@@ -71,10 +71,12 @@ const eraseBtn = document.querySelector('.erase_button');
 
 function eraseAllFav() {
   localStorage.removeItem('favourites');
-  listFavourites.remove();
+  listFavourites.innerHTML = '';
 }
 
 eraseBtn.addEventListener('click', eraseAllFav);
+
+//La función eraseFav borra el elemento de la lista pero no de localstorage. Además, deja de funcionar tras ejecutar la función eraseAllFav y realizar una nueva búsqueda (hasta que no volvemos a actualizar la página, que entonces sí que vuelve a funcionar).
 
 function eraseFav(event) {
   const cross = event.currentTarget;
