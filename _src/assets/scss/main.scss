@@ -124,6 +124,7 @@ img {
 	padding: 10px;
 	margin: 5px;
 	width: 140px;
+	text-align: center;
 }
 
 .favourite {
@@ -136,4 +137,10 @@ img {
 .title_serie {
 	margin: 15px;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.item_genre {
+	font-style: italic;
+	font-size: 12px;
+	color: rgb(27, 27, 27);
 }

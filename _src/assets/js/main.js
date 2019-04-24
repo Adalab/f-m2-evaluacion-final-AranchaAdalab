@@ -22,34 +22,45 @@ function search () {
     .then (response => response.json())
     .then (data => {
       for (const result of data) {
+        const genre = result.show.genres;
+        let listGenres = '';
+        for (const item of genre) {
+          listGenres += `<h4 class="item_genre">${item}</h4>`;
+        }
         if (result.show.image === null) {
-          list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br><h3 class="title_serie">${result.show.name}</h3></li>`;
+          list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br><h3 class="title_serie">${result.show.name}</h3>${listGenres}</li>`;
         } else {
-          list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br><h3 class="title_serie">${result.show.name}</h3></li>`;
+          list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br><h3 class="title_serie">${result.show.name}</h3>${listGenres}</li>`;
         }
       }
       const everyShow = document.querySelectorAll('li');
       for (const li of everyShow) {
-        li.addEventListener('click', fav);
+        li.addEventListener('click', titleConsole);
       }
     });
 }
 
 button.addEventListener('click', search);
 
-function fav(event) {
+// function fav(event) {
+//   const li = event.currentTarget;
+//   const photo = li.querySelector('.photo').src;
+//   const titleSerie = li.querySelector('.title_serie').innerHTML;
+//   li.classList.toggle('favourite');
+//   if (li.classList.contains('favourite')) {
+//     favourites.push({photo, titleSerie});
+//   }
+//   listFavourites.innerHTML = '';
+//   for (let i=0; i<favourites.length; i++) {
+//     listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${favourites[i].photo}"><h3 class="favourite_title_serie">${favourites[i].titleSerie}</h3><i class="fas fa-times-circle"></i></li>`;
+//     localStorage.setItem('favourites', JSON.stringify(favourites));
+//   }
+// }
+
+function titleConsole(event) {
   const li = event.currentTarget;
-  const photo = li.querySelector('.photo').src;
   const titleSerie = li.querySelector('.title_serie').innerHTML;
-  li.classList.toggle('favourite');
-  if (li.classList.contains('favourite')) {
-    favourites.push({photo, titleSerie});
-  }
-  listFavourites.innerHTML = '';
-  for (let i=0; i<favourites.length; i++) {
-    listFavourites.innerHTML += `<br><li class="favourite_serie"><img class="favourite_photo" src="${favourites[i].photo}"><h3 class="favourite_title_serie">${favourites[i].titleSerie}</h3><i class="fas fa-times-circle"></i></li>`;
-    localStorage.setItem('favourites', JSON.stringify(favourites));
-  }
+  console.log(titleSerie);
 }
 
 function saveData() {
@@ -75,8 +86,6 @@ function eraseAllFav() {
 }
 
 eraseBtn.addEventListener('click', eraseAllFav);
-
-//La función eraseFav borra el elemento de la lista pero no de localstorage. Además, deja de funcionar tras ejecutar la función eraseAllFav y realizar una nueva búsqueda (hasta que no volvemos a actualizar la página, que entonces sí que vuelve a funcionar).
 
 function eraseFav(event) {
   const cross = event.currentTarget;
