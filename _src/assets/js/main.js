@@ -25,12 +25,12 @@ function search () {
         const genre = result.show.genres;
         let listGenres = '';
         for (const item of genre) {
-          listGenres += `<h4 class="item_genre">${item}</h4>`;
+          listGenres += `<li class="item_genre">${item}</li>`;
         }
         if (result.show.image === null) {
-          list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br><h3 class="title_serie">${result.show.name}</h3>${listGenres}</li>`;
+          list.innerHTML += `<li class="serie"><img class="photo" src="${imgDefault}"<br><h3 class="title_serie">${result.show.name}</h3><ul class="genre">${listGenres}</ul></li>`;
         } else {
-          list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br><h3 class="title_serie">${result.show.name}</h3>${listGenres}</li>`;
+          list.innerHTML += `<li class="serie"><img class="photo" src="${result.show.image.medium}"<br><h3 class="title_serie">${result.show.name}</h3><ul class="genre">${listGenres}</ul></li>`;
         }
       }
       const everyShow = document.querySelectorAll('li');
